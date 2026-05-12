@@ -1789,6 +1789,4 @@ def set_nodebuster_rules(world: NodebusterWorld) -> None:
         world.set_rule(world.get_location(location_name), rule)
 
     # Goal
-    world.set_completion_rule = released_virus
-
-    # visualize_regions(multiworld.get_region("Menu", player), "nodebuster_world.puml")
+    world.set_completion_rule(released_virus)

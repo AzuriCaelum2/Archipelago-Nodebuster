@@ -1,6 +1,7 @@
 from typing import Any
 
 from BaseClasses import Item, Region, Tutorial, MultiWorld
+from Utils import visualize_regions
 from worlds.AutoWorld import WebWorld, World
 
 from . import rules
@@ -134,7 +135,7 @@ class NodebusterWorld(World):
     def generate_early(self) -> None:
         pass
 
-    def generate_basic(self) -> None:
+    def pre_fill(self) -> None:
         # Place vanilla items
         self.multiworld.get_location("Virus Released", self.player).place_locked_item(
             self.create_item("Virus Deployed"))
@@ -166,6 +167,8 @@ class NodebusterWorld(World):
         if not self.options.bossdrops:
             for boss in boss_locations:
                 self.multiworld.get_location(boss, self.player).place_locked_item(self.create_item("Boss Drop"))
+
+        visualize_regions(self.get_region("Indomitable"), "nodebuster map.puml")
 
     def create_item(self, name: str) -> Item:
         item_id = self.item_name_to_id[name]
