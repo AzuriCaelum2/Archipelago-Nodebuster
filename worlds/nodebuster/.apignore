@@ -1,0 +1,14 @@
+# Archipelago 0.6.7 feature to exclude certain files when building apworlds
+
+/docs/TODO.md
+
+# Auto-created folders
+__MACOSX
+.DS_Store
+__pycache__
+
+# Unneeded files
+/archipelago.json
+/.apignore
+/.git
+/.gitignore
