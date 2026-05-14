@@ -192,579 +192,300 @@ progressive_item_map: dict[str, list[ProgItemMapping]] = {
     ],
 }
 
-damage1 = HasAny("Damage1", "Damage2", "Damage3", "Damage4", "Damage5")
-damage10 = (HasAny("Damage4", "Damage5") |
-            Has("Damage3", 2) |
-            (Has("Damage3") & (HasAll("Damage2", "Damage1") |
-                              Has("Damage1", 4))) |
-            Has("Damage2", 4) |
-            (HasAllCounts({"Damage2": 3, "Damage1": 1}) |
-             HasAllCounts({"Damage2": 2, "Damage1": 4}) |
-             HasAllCounts({"Damage2": 1, "Damage1": 7}) |
-             Has("Damage1", 10)))
-damage15 = (HasAny("Damage4", "Damage5") |
-            (Has("Damage3", 3)) |
-            (Has("Damage3", 2) & (Has("Damage2") |
-                                  Has("Damage1", 3))) |
-            (Has("Damage3", 1) & (Has("Damage2", 3) |
-                                  HasAllCounts({"Damage2": 2, "Damage1": 3}) |
-                                  HasAllCounts({"Damage2": 1, "Damage1": 6}) |
-                                  Has("Damage1", 9))) |
-            (Has("Damage2", 5)) |
-            (HasAllCounts({"Damage2": 4, "Damage1": 3})) |
-            (HasAllCounts({"Damage2": 3, "Damage1": 6})) |
-            (HasAllCounts({"Damage2": 2, "Damage1": 9})) |
-            (HasAllCounts({"Damage2": 1, "Damage1": 12})) |
-            (Has("Damage1", 15)))
-damage31 = (Has("Damage5") |
-            HasAllCounts({"Damage4": 1, "Damage3": 1}) |
-            HasAllCounts({"Damage4": 1, "Damage2": 2}) |
-            HasAllCounts({"Damage4": 1, "Damage1": 6}) |
-            (Has("Damage3", 4) & HasAny("Damage2", "Damage1")) |
-            (Has("Damage3", 3) & (Has("Damage2", 5) |
-                                  HasAllCounts({"Damage2": 4, "Damage1": 1}) |
-                                  HasAllCounts({"Damage2": 3, "Damage1": 4}) |
-                                  HasAllCounts({"Damage2": 2, "Damage1": 7}) |
-                                  HasAllCounts({"Damage2": 1, "Damage1": 10}) |
-                                  Has("Damage1", 13))) |
-            (Has("Damage3", 2) & (Has("Damage2", 7) |
-                                  HasAllCounts({"Damage2": 6, "Damage1": 1}) |
-                                  HasAllCounts({"Damage2": 5, "Damage1": 4}) |
-                                  HasAllCounts({"Damage2": 4, "Damage1": 7}) |
-                                  HasAllCounts({"Damage2": 3, "Damage1": 10}) |
-                                  HasAllCounts({"Damage2": 2, "Damage1": 13}))) |
-            (Has("Damage3", 1) & (Has("Damage2", 9) |
-                                  HasAllCounts({"Damage2": 8, "Damage1": 1}) |
-                                  HasAllCounts({"Damage2": 7, "Damage1": 4}) |
-                                  HasAllCounts({"Damage2": 6, "Damage1": 7}) |
-                                  HasAllCounts({"Damage2": 5, "Damage1": 10}) |
-                                  HasAllCounts({"Damage2": 4, "Damage1": 13}))) |
-            Has("Damage2", 11) |
-            HasAllCounts({"Damage2": 10, "Damage1": 1}) |
-            HasAllCounts({"Damage2": 9, "Damage1": 4}) |
-            HasAllCounts({"Damage2": 8, "Damage1": 7}) |
-            HasAllCounts({"Damage2": 7, "Damage1": 10}) |
-            HasAllCounts({"Damage2": 6, "Damage1": 13}))
-damage37 = (Has("Damage5") |
-            Has("Damage4", 2) |
-           (Has("Damage4", 1) & (Has("Damage3", 2) |
-                                 Has("Damage3", 1) & (Has("Damage2", 2) |
-                                                     (Has("Damage2", 1) & Has("Damage1", 3)) |
-                                                      Has("Damage1", 6)) |
-                                 Has("Damage2", 4) |
-                                 HasAllCounts({"Damage2": 3, "Damage1": 3}) |
-                                 HasAllCounts({"Damage2": 2, "Damage1": 6}) |
-                                 HasAllCounts({"Damage2": 1, "Damage1": 9}))) |
-            Has("Damage3", 7) |
-           (Has("Damage3", 6) & HasAny("Damage1", "Damage2")) |
-           (Has("Damage3", 5) & (Has("Damage2", 3) |
-                                 HasAllCounts({"Damage2": 2, "Damage1": 1}) |
-                                 HasAllCounts({"Damage2": 1, "Damage1": 4}) |
-                                 Has("Damage1", 7))) |
-           (Has("Damage3", 4) & (Has("Damage2", 5) |
-                                 HasAllCounts({"Damage2": 4, "Damage1": 1}) |
-                                 HasAllCounts({"Damage2": 3, "Damage1": 4}) |
-                                 HasAllCounts({"Damage2": 2, "Damage1": 7}) |
-                                 HasAllCounts({"Damage2": 1, "Damage1": 10}) |
-                                 Has("Damage1", 13))) |
-           (Has("Damage3", 3) & (Has("Damage2", 7) |
-                                 HasAllCounts({"Damage2": 6, "Damage1": 4}) |
-                                 HasAllCounts({"Damage2": 5, "Damage1": 7}) |
-                                 HasAllCounts({"Damage2": 4, "Damage1": 10}) |
-                                 HasAllCounts({"Damage2": 3, "Damage1": 13}))) |
-           (Has("Damage3", 2) & (Has("Damage2", 9) |
-                                 HasAllCounts({"Damage2": 8, "Damage1": 1}) |
-                                 HasAllCounts({"Damage2": 7, "Damage1": 4}) |
-                                 HasAllCounts({"Damage2": 6, "Damage1": 7}) |
-                                 HasAllCounts({"Damage2": 5, "Damage1": 10}))) |
-           (Has("Damage3", 1) & (HasAllCounts({"Damage2": 10, "Damage1": 1}) |
-                                 HasAllCounts({"Damage2": 9, "Damage1": 4}) |
-                                 HasAllCounts({"Damage2": 8, "Damage1": 7}) |
-                                 HasAllCounts({"Damage2": 7, "Damage1": 10}) |
-                                 HasAllCounts({"Damage2": 6, "Damage1": 13}))) |
-            HasAllCounts({"Damage3": 10, "Damage1": 7}) |
-            HasAllCounts({"Damage3": 9, "Damage1": 10}) |
-            HasAllCounts({"Damage3": 8, "Damage1": 13}))
-damage45 = (Has("Damage5") |
-            (Has("Damage4", 2)) |
-            (Has("Damage4", 1) & (Has("Damage3", 4)) |
-                                  (Has("Damage3", 3) & HasAny("Damage2", "Damage1")) |
-                                  (Has("Damage3", 2) & (Has("Damage2", 3) |
-                                                        HasAllCounts({"Damage2": 2, "Damage1": 2}) |
-                                                        HasAllCounts({"Damage2": 1, "Damage1": 5}) |
-                                                        Has("Damage1", 8))) |
-                                  (Has("Damage3", 1) & (Has("Damage2", 5) |
-                                                        HasAllCounts({"Damage2": 4, "Damage1": 2}) |
-                                                        HasAllCounts({"Damage2": 3, "Damage1": 5}) |
-                                                        HasAllCounts({"Damage2": 2, "Damage1": 8}) |
-                                                        HasAllCounts({"Damage2": 1, "Damage1": 11}) |
-                                                        Has("Damage1", 14))) |
-                                  (Has("Damage2", 7)) |
-                                  (HasAllCounts({"Damage2": 6, "Damage1": 2})) |
-                                  (HasAllCounts({"Damage2": 6, "Damage1": 2})) |
-                                  (HasAllCounts({"Damage2": 6, "Damage1": 2})) |
-                                  (HasAllCounts({"Damage2": 6, "Damage1": 2})) |
-                                  (HasAllCounts({"Damage2": 6, "Damage1": 2}))) |
-            (Has("Damage3", 8)) |
-            (Has("Damage3", 7) & (Has("Damage2") |
-                                  Has("Damage1", 3))) |
-            (Has("Damage3", 6) & (Has("Damage2", 3) |
-                                  HasAllCounts({"Damage2": 2, "Damage1": 3}) |
-                                  HasAllCounts({"Damage2": 1, "Damage1": 6}) |
-                                  Has("Damage1", 9))) |
-            (Has("Damage3", 5) & (Has("Damage2", 5) |
-                                  HasAllCounts({"Damage2": 4, "Damage1": 3}) |
-                                  HasAllCounts({"Damage2": 3, "Damage1": 6}) |
-                                  HasAllCounts({"Damage2": 2, "Damage1": 9}) |
-                                  HasAllCounts({"Damage2": 1, "Damage1": 12}) |
-                                  Has("Damage1", 15))) |
-            (Has("Damage3", 4) & (Has("Damage2", 7) |
-                                  HasAllCounts({"Damage2": 6, "Damage1": 3}) |
-                                  HasAllCounts({"Damage2": 5, "Damage1": 6}) |
-                                  HasAllCounts({"Damage2": 4, "Damage1": 9}) |
-                                  HasAllCounts({"Damage2": 3, "Damage1": 12}) |
-                                  HasAllCounts({"Damage2": 2, "Damage1": 15}))) |
-            (Has("Damage3", 3) & (Has("Damage2", 9) |
-                                  HasAllCounts({"Damage2": 8, "Damage1": 3}) |
-                                  HasAllCounts({"Damage2": 7, "Damage1": 6}) |
-                                  HasAllCounts({"Damage2": 6, "Damage1": 9}) |
-                                  HasAllCounts({"Damage2": 5, "Damage1": 12}) |
-                                  HasAllCounts({"Damage2": 4, "Damage1": 15}))) |
-            (Has("Damage3", 2) & (HasAllCounts({"Damage2": 10, "Damage1": 3}) |
-                                  HasAllCounts({"Damage2": 9, "Damage1": 6}) |
-                                  HasAllCounts({"Damage2": 8, "Damage1": 9}) |
-                                  HasAllCounts({"Damage2": 7, "Damage1": 12}) |
-                                  HasAllCounts({"Damage2": 6, "Damage1": 15}))) |
-            (Has("Damage3", 1) & (HasAllCounts({"Damage2": 10, "Damage1": 9}) |
-                                  HasAllCounts({"Damage2": 9, "Damage1": 12}) |
-                                  HasAllCounts({"Damage2": 8, "Damage1": 15}))) |
-            HasAllCounts({"Damage2": 10, "Damage1": 15}))
-damage63 = (Has("Damage5") |
-            (Has("Damage4", 3)) |
-            (Has("Damage4", 2) & (Has("Damage3", 3)) |
-                                  (Has("Damage3", 2) & HasAny("Damage2", "Damage1")) |
-                                  (Has("Damage3", 1) & (Has("Damage2", 3) |
-                                                        HasAllCounts({"Damage2": 2, "Damage1": 3}) |
-                                                        HasAllCounts({"Damage2": 1, "Damage1": 6}) |
-                                                        Has("Damage1", 9))) |
-                                  (Has("Damage2", 5)) |
-                                  (HasAllCounts({"Damage2": 4, "Damage1": 1})) |
-                                  (HasAllCounts({"Damage2": 3, "Damage1": 4})) |
-                                  (HasAllCounts({"Damage2": 2, "Damage1": 7})) |
-                                  (HasAllCounts({"Damage2": 1, "Damage1": 10})) |
-                                  (Has("Damage1", 13))) |
-            (Has("Damage4") & (Has("Damage3", 7) |
-                               Has("Damage3", 6) & (Has("Damage2") |
-                                                    Has("Damage1", 2)) |
-                               Has("Damage3", 5) & (Has("Damage2", 3) |
-                                                    HasAllCounts({"Damage2": 2, "Damage1": 2}) |
-                                                    HasAllCounts({"Damage2": 1, "Damage1": 5}) |
-                                                    Has("Damage1", 8)) |
-                               Has("Damage3", 4) & (Has("Damage2", 5) |
-                                                    HasAllCounts({"Damage2": 4, "Damage1": 2}) |
-                                                    HasAllCounts({"Damage2": 3, "Damage1": 5}) |
-                                                    HasAllCounts({"Damage2": 2, "Damage1": 8}) |
-                                                    HasAllCounts({"Damage2": 1, "Damage1": 11}) |
-                                                    Has("Damage1", 14)) |
-                               Has("Damage3", 3) & (Has("Damage2", 7) |
-                                                    HasAllCounts({"Damage2": 6, "Damage1": 2}) |
-                                                    HasAllCounts({"Damage2": 5, "Damage1": 5}) |
-                                                    HasAllCounts({"Damage2": 4, "Damage1": 8}) |
-                                                    HasAllCounts({"Damage2": 3, "Damage1": 11}) |
-                                                    HasAllCounts({"Damage2": 2, "Damage1": 14})) |
-                               Has("Damage3", 2) & (Has("Damage2", 9) |
-                                                    HasAllCounts({"Damage2": 8, "Damage1": 2}) |
-                                                    HasAllCounts({"Damage2": 7, "Damage1": 5}) |
-                                                    HasAllCounts({"Damage2": 6, "Damage1": 8}) |
-                                                    HasAllCounts({"Damage2": 5, "Damage1": 11}) |
-                                                    HasAllCounts({"Damage2": 4, "Damage1": 14})) |
-                               Has("Damage3", 1) & (HasAllCounts({"Damage2": 10, "Damage1": 2}) |
-                                                    HasAllCounts({"Damage2": 9, "Damage1": 5}) |
-                                                    HasAllCounts({"Damage2": 8, "Damage1": 8}) |
-                                                    HasAllCounts({"Damage2": 7, "Damage1": 11}) |
-                                                    HasAllCounts({"Damage2": 6, "Damage1": 14})) |
-                               HasAllCounts({"Damage2": 10, "Damage1": 8}) |
-                               HasAllCounts({"Damage2": 9, "Damage1": 11}) |
-                               HasAllCounts({"Damage2": 8, "Damage1": 14}))) |
-            (Has("Damage3", 10) & (Has("Damage2") |
-                                   Has("Damage1", 3))) |
-            (Has("Damage3", 9) & (Has("Damage2", 3) |
-                                  HasAllCounts({"Damage2": 2, "Damage1": 3}) |
-                                  HasAllCounts({"Damage2": 1, "Damage1": 6}) |
-                                  Has("Damage1", 9))) |
-            (Has("Damage3", 8) & (Has("Damage2", 5) |
-                                   HasAllCounts({"Damage2": 4, "Damage1": 3}) |
-                                   HasAllCounts({"Damage2": 3, "Damage1": 6}) |
-                                   HasAllCounts({"Damage2": 2, "Damage1": 9}) |
-                                   HasAllCounts({"Damage2": 1, "Damage1": 12}) |
-                                   Has("Damage1", 15))) |
-            (Has("Damage3", 7) & (Has("Damage2", 7) |
-                                   HasAllCounts({"Damage2": 6, "Damage1": 3}) |
-                                   HasAllCounts({"Damage2": 5, "Damage1": 6}) |
-                                   HasAllCounts({"Damage2": 4, "Damage1": 9}) |
-                                   HasAllCounts({"Damage2": 3, "Damage1": 12}) |
-                                   HasAllCounts({"Damage2": 2, "Damage1": 15}))) |
-            (Has("Damage3", 6) & (Has("Damage2", 9) |
-                                  HasAllCounts({"Damage2": 8, "Damage1": 3}) |
-                                  HasAllCounts({"Damage2": 7, "Damage1": 6}) |
-                                  HasAllCounts({"Damage2": 6, "Damage1": 9}) |
-                                  HasAllCounts({"Damage2": 5, "Damage1": 12}) |
-                                  HasAllCounts({"Damage2": 4, "Damage1": 15}))) |
-            (Has("Damage3", 5) & (HasAllCounts({"Damage2": 10, "Damage1": 3}) |
-                                  HasAllCounts({"Damage2": 9, "Damage1": 6}) |
-                                  HasAllCounts({"Damage2": 8, "Damage1": 9}) |
-                                  HasAllCounts({"Damage2": 7, "Damage1": 12}) |
-                                  HasAllCounts({"Damage2": 6, "Damage1": 15}))) |
-            (Has("Damage3", 4) & (HasAllCounts({"Damage2": 10, "Damage1": 9}) |
-                                  HasAllCounts({"Damage2": 9, "Damage1": 12}) |
-                                  HasAllCounts({"Damage2": 8, "Damage1": 15}))) |
-            (HasAllCounts({"Damage3": 3, "Damage2": 10, "Damage1": 15})))
-damage81 = (Has("Damage5") |
-           (Has("Damage4", 3) & (Has("Damage3") |
-                                 Has("Damage2", 2) |
-                                 HasAllCounts({"Damage2": 1, "Damage1": 3}) |
-                                 Has("Damage1", 6))) |
-           (Has("Damage4", 2) & (Has("Damage3", 6)) |
-                                 (Has("Damage3", 5) & HasAny("Damage2", "Damage1")) |
-                                 (Has("Damage3", 4) & (Has("Damage2", 3) |
-                                                       (HasAllCounts({"Damage2": 2, "Damage1": 1}) |
-                                                        HasAllCounts({"Damage2": 1, "Damage1": 4}) |
-                                                        Has("Damage1", 7)))) |
-                                 (Has("Damage3", 3) & (Has("Damage2", 5) |
-                                                       HasAllCounts({"Damage2": 4, "Damage1": 1}) |
-                                                       HasAllCounts({"Damage2": 3, "Damage1": 4}) |
-                                                       HasAllCounts({"Damage2": 2, "Damage1": 7}) |
-                                                       HasAllCounts({"Damage2": 1, "Damage1": 10}) |
-                                                       Has("Damage1", 13))) |
-                                 (Has("Damage3", 2) & (Has("Damage2", 7) |
-                                                       HasAllCounts({"Damage2": 6, "Damage1": 1}) |
-                                                       HasAllCounts({"Damage2": 5, "Damage1": 4}) |
-                                                       HasAllCounts({"Damage2": 4, "Damage1": 7}) |
-                                                       HasAllCounts({"Damage2": 3, "Damage1": 10}) |
-                                                       HasAllCounts({"Damage2": 2, "Damage1": 13}))) |
-                                 (Has("Damage3", 1) & (Has("Damage2", 9) |
-                                                       HasAllCounts({"Damage2": 8, "Damage1": 1}) |
-                                                       HasAllCounts({"Damage2": 7, "Damage1": 4}) |
-                                                       HasAllCounts({"Damage2": 6, "Damage1": 7}) |
-                                                       HasAllCounts({"Damage2": 5, "Damage1": 10}) |
-                                                       HasAllCounts({"Damage2": 4, "Damage1": 13}))) |
-                                 HasAllCounts({"Damage2": 10, "Damage1": 1}) |
-                                 HasAllCounts({"Damage2": 9, "Damage1": 4}) |
-                                 HasAllCounts({"Damage2": 8, "Damage1": 7}) |
-                                 HasAllCounts({"Damage2": 7, "Damage1": 10}) |
-                                 HasAllCounts({"Damage2": 6, "Damage1": 13})) |
-            (Has("Damage4", 1) & (Has("Damage3", 10) |
-                                  (Has("Damage3", 9) & (Has("Damage2") |
-                                                        Has("Damage1", 2))) |
-                                  (Has("Damage3", 8) & (Has("Damage2", 3) |
-                                                        HasAllCounts({"Damage2": 2, "Damage1": 2}) |
-                                                        HasAllCounts({"Damage2": 1, "Damage1": 5}) |
-                                                        Has("Damage1", 8))) |
-                                  (Has("Damage3", 7) & (Has("Damage2", 5) |
-                                                        HasAllCounts({"Damage2": 4, "Damage1": 2}) |
-                                                        HasAllCounts({"Damage2": 3, "Damage1": 5}) |
-                                                        HasAllCounts({"Damage2": 2, "Damage1": 8}) |
-                                                        HasAllCounts({"Damage2": 1, "Damage1": 11}) |
-                                                        Has("Damage1", 14))) |
-                                  (Has("Damage3", 6) & (Has("Damage2", 7) |
-                                                        HasAllCounts({"Damage2": 6, "Damage1": 2}) |
-                                                        HasAllCounts({"Damage2": 5, "Damage1": 5}) |
-                                                        HasAllCounts({"Damage2": 4, "Damage1": 8}) |
-                                                        HasAllCounts({"Damage2": 3, "Damage1": 11}) |
-                                                        HasAllCounts({"Damage2": 2, "Damage1": 14}))) |
-                                  (Has("Damage3", 5) & (Has("Damage2", 9) |
-                                                        HasAllCounts({"Damage2": 8, "Damage1": 2}) |
-                                                        HasAllCounts({"Damage2": 7, "Damage1": 5}) |
-                                                        HasAllCounts({"Damage2": 6, "Damage1": 8}) |
-                                                        HasAllCounts({"Damage2": 5, "Damage1": 11}) |
-                                                        HasAllCounts({"Damage2": 4, "Damage1": 14}))) |
-                                  (Has("Damage3", 4) & (HasAllCounts({"Damage2": 10, "Damage1": 2}) |
-                                                        HasAllCounts({"Damage2": 9, "Damage1": 5}) |
-                                                        HasAllCounts({"Damage2": 8, "Damage1": 8}) |
-                                                        HasAllCounts({"Damage2": 7, "Damage1": 11}) |
-                                                        HasAllCounts({"Damage2": 6, "Damage1": 14}))) |
-                                  (Has("Damage3", 3) & (HasAllCounts({"Damage2": 10, "Damage1": 8}) |
-                                                        HasAllCounts({"Damage2": 9, "Damage1": 11}) |
-                                                        HasAllCounts({"Damage2": 8, "Damage1": 14}))) |
-                                  (Has("Damage3", 2) & (HasAllCounts({"Damage2": 10, "Damage1": 14})))) |
-             (Has("Damage3", 10) & (Has("Damage2", 7) |
-                                   HasAllCounts({"Damage2": 6, "Damage1": 3}) |
-                                    HasAllCounts({"Damage2": 5, "Damage1": 6}) |
-                                    HasAllCounts({"Damage2": 4, "Damage1": 9}) |
-                                    HasAllCounts({"Damage2": 3, "Damage1": 12}) |
-                                    HasAllCounts({"Damage2": 2, "Damage1": 15}))) |
-             (Has("Damage3", 9) & (Has("Damage2", 9) |
-                                   HasAllCounts({"Damage2": 8, "Damage1": 3}) |
-                                   HasAllCounts({"Damage2": 7, "Damage1": 6}) |
-                                   HasAllCounts({"Damage2": 6, "Damage1": 9}) |
-                                   HasAllCounts({"Damage2": 5, "Damage1": 12}) |
-                                   HasAllCounts({"Damage2": 4, "Damage1": 15}))) |
-             (Has("Damage3", 8) & (HasAllCounts({"Damage2": 10, "Damage1": 6}) |
-                                   HasAllCounts({"Damage2": 9, "Damage1": 9}) |
-                                   HasAllCounts({"Damage2": 8, "Damage1": 12}) |
-                                   HasAllCounts({"Damage2": 7, "Damage1": 15}))) |
-             (Has("Damage3", 7) & (HasAllCounts({"Damage2": 10, "Damage1": 9}) |
-                                   HasAllCounts({"Damage2": 9, "Damage1": 12}) |
-                                   HasAllCounts({"Damage2": 8, "Damage1": 15}))) |
-             HasAllCounts({"Damage3": 6, "Damage2": 10, "Damage1": 15})))
-damage91 = (Has("Damage5") |
-           (Has("Damage4", 3) & (Has("Damage3", 3)) |
-                                (Has("Damage3", 2) & (HasAll("Damage1", "Damage2") |
-                                                      Has("Damage1", 4)) |
-                                 Has("Damage3", 1) & (HasAllCounts({"Damage3": 3, "Damage1": 1}) |
-                                                      HasAllCounts({"Damage3": 2, "Damage1": 4}) |
-                                                      HasAllCounts({"Damage3": 1, "Damage1": 7}) |
-                                                      Has("Damage1", 10)))) |
-           (Has("Damage4", 2) & (Has("Damage3", 7) |
-                                (Has("Damage3", 6) & (Has("Damage2", 2) |
-                                                     (HasAllCounts({"Damage2": 1, "Damage1": 2}) |
-                                                      Has("Damage1", 5)))) |
-                                (Has("Damage3", 5) & (Has("Damage2", 4) |
-                                                      HasAllCounts({"Damage2": 3, "Damage1": 2}) |
-                                                      HasAllCounts({"Damage2": 2, "Damage1": 5}) |
-                                                      HasAllCounts({"Damage2": 1, "Damage1": 8}))) |
-                                (Has("Damage3", 4) & (Has("Damage2", 6) |
-                                                       HasAllCounts({"Damage2": 5, "Damage1": 2}) |
-                                                       HasAllCounts({"Damage2": 4, "Damage1": 5}) |
-                                                       HasAllCounts({"Damage2": 3, "Damage1": 8}) |
-                                                       HasAllCounts({"Damage2": 2, "Damage1": 11}) |
-                                                       HasAllCounts({"Damage2": 1, "Damage1": 14}))) |
-                                (Has("Damage3", 3) & (Has("Damage2", 8) |
-                                                      HasAllCounts({"Damage2": 7, "Damage1": 2}) |
-                                                      HasAllCounts({"Damage2": 6, "Damage1": 5}) |
-                                                      HasAllCounts({"Damage2": 5, "Damage1": 8}) |
-                                                      HasAllCounts({"Damage2": 4, "Damage1": 11}) |
-                                                      HasAllCounts({"Damage2": 3, "Damage1": 14}))) |
-                                (Has("Damage3", 2) & (Has("Damage2", 10) |
-                                                      HasAllCounts({"Damage2": 9, "Damage1": 2}) |
-                                                      HasAllCounts({"Damage2": 8, "Damage1": 5}) |
-                                                      HasAllCounts({"Damage2": 7, "Damage1": 8}) |
-                                                      HasAllCounts({"Damage2": 6, "Damage1": 11}) |
-                                                      HasAllCounts({"Damage2": 5, "Damage1": 14}))) |
-                                (Has("Damage3", 1) & (HasAllCounts({"Damage2": 10, "Damage1": 5}) |
-                                                      HasAllCounts({"Damage2": 9, "Damage1": 8}) |
-                                                      HasAllCounts({"Damage2": 8, "Damage1": 11}) |
-                                                      HasAllCounts({"Damage2": 7, "Damage1": 14}))) |
-                                 HasAllCounts({"Damage2": 10, "Damage1": 11}) |
-                                 HasAllCounts({"Damage2": 9, "Damage1": 14}))) |
-           (Has("Damage4", 1) & (Has("Damage3", 10) & (Has("Damage2", 2) |
-                                                       HasAllCounts({"Damage2": 1, "Damage1": 3}) |
-                                                       Has("Damage1", 6))) |
-                                (Has("Damage3", 9) & (Has("Damage2", 4) |
-                                                      HasAllCounts({"Damage2": 3, "Damage1": 3}) |
-                                                      HasAllCounts({"Damage2": 2, "Damage1": 6}) |
-                                                      HasAllCounts({"Damage2": 1, "Damage1": 9}) |
-                                                      Has("Damage1", 12))) |
-                                (Has("Damage3", 8) & (Has("Damage2", 6) |
-                                                      HasAllCounts({"Damage2": 5, "Damage1": 3}) |
-                                                      HasAllCounts({"Damage2": 4, "Damage1": 6}) |
-                                                      HasAllCounts({"Damage2": 3, "Damage1": 9}) |
-                                                      HasAllCounts({"Damage2": 2, "Damage1": 12}) |
-                                                      HasAllCounts({"Damage2": 1, "Damage1": 15}))) |
-                                (Has("Damage3", 7) & (Has("Damage2", 8) |
-                                                      HasAllCounts({"Damage2": 7, "Damage1": 3}) |
-                                                      HasAllCounts({"Damage2": 6, "Damage1": 6}) |
-                                                      HasAllCounts({"Damage2": 5, "Damage1": 9}) |
-                                                      HasAllCounts({"Damage2": 4, "Damage1": 12}) |
-                                                      HasAllCounts({"Damage2": 3, "Damage1": 15}))) |
-                                (Has("Damage3", 6) & (Has("Damage2", 10) |
-                                                      HasAllCounts({"Damage2": 9, "Damage1": 3}) |
-                                                      HasAllCounts({"Damage2": 8, "Damage1": 6}) |
-                                                      HasAllCounts({"Damage2": 7, "Damage1": 9}) |
-                                                      HasAllCounts({"Damage2": 6, "Damage1": 12}) |
-                                                      HasAllCounts({"Damage2": 5, "Damage1": 15})))) |
-           (Has("Damage3", 10) & (HasAllCounts({"Damage2": 10, "Damage1": 1}) |
-                                   HasAllCounts({"Damage2": 9, "Damage1": 4}) |
-                                   HasAllCounts({"Damage2": 8, "Damage1": 7}) |
-                                   HasAllCounts({"Damage2": 7, "Damage1": 10}) |
-                                   HasAllCounts({"Damage2": 6, "Damage1": 13}))) |
-           (Has("Damage3", 9) & (HasAllCounts({"Damage2": 10, "Damage1": 7}) |
-                                  HasAllCounts({"Damage2": 9, "Damage1": 10}) |
-                                  HasAllCounts({"Damage2": 8, "Damage1": 13}))) |
-           (Has("Damage3", 8) & HasAllCounts({"Damage2": 10, "Damage1": 13})))
-damage166 = (Has("Damage5", 2) |
-            (Has("Damage5") & (Has("Damage4", 3) |
-                              (Has("Damage4", 2) & (Has("Damage3", 3) |
-                                                   (Has("Damage3", 2) & (Has("Damage2", 2) |
-                                                                        (HasAllCounts({"Damage2": 1, "Damage1": 1})))) |
-                                                   (Has("Damage3", 1) & (Has("Damage2", 4) |
-                                                                         HasAllCounts({"Damage2": 3, "Damage1": 1}) |
-                                                                         HasAllCounts({"Damage2": 2, "Damage1": 4}) |
-                                                                         HasAllCounts({"Damage2": 1, "Damage1": 7}) |
-                                                                         Has("Damage1", 10))) |
-                                                    Has("Damage2", 6) |
-                                                    HasAllCounts({"Damage2": 5, "Damage1": 1}) |
-                                                    HasAllCounts({"Damage2": 4, "Damage1": 4}) |
-                                                    HasAllCounts({"Damage2": 3, "Damage1": 7}) |
-                                                    HasAllCounts({"Damage2": 2, "Damage1": 10}) |
-                                                    HasAllCounts({"Damage2": 1, "Damage1": 13}))) |
-                              (Has("Damage4", 1) & (Has("Damage3", 5) |
-                                                    (Has("Damage3", 4) & (Has("Damage2", 6) |
-                                                                         HasAllCounts({"Damage2": 5, "Damage1": 2}) |
-                                                                         HasAllCounts({"Damage2": 4, "Damage1": 5}) |
-                                                                         HasAllCounts({"Damage2": 3, "Damage1": 8}) |
-                                                                         HasAllCounts({"Damage2": 2, "Damage1": 11}) |
-                                                                         HasAllCounts({"Damage2": 1, "Damage1": 14}))) |
-                                                    (Has("Damage3", 3) & (Has("Damage2", 8) |
-                                                                         HasAllCounts({"Damage2": 7, "Damage1": 2}) |
-                                                                         HasAllCounts({"Damage2": 6, "Damage1": 5}) |
-                                                                         HasAllCounts({"Damage2": 5, "Damage1": 8}) |
-                                                                         HasAllCounts({"Damage2": 4, "Damage1": 11}) |
-                                                                         HasAllCounts({"Damage2": 3, "Damage1": 14}))) |
-                                                    (Has("Damage3", 2) & (Has("Damage2", 10) |
-                                                                         HasAllCounts({"Damage2": 9, "Damage1": 2}) |
-                                                                         HasAllCounts({"Damage2": 8, "Damage1": 5}) |
-                                                                         HasAllCounts({"Damage2": 7, "Damage1": 8}) |
-                                                                         HasAllCounts({"Damage2": 6, "Damage1": 11}) |
-                                                                         HasAllCounts({"Damage2": 5, "Damage1": 14}))) |
-                                                    (Has("Damage3", 1) & (HasAllCounts({"Damage2": 10, "Damage1": 5}) |
-                                                                         HasAllCounts({"Damage2": 9, "Damage1": 8}) |
-                                                                         HasAllCounts({"Damage2": 8, "Damage1": 11}) |
-                                                                         HasAllCounts({"Damage2": 7, "Damage1": 14}))) |
-                                                    HasAllCounts({"Damage2": 10, "Damage1": 11}) |
-                                                    HasAllCounts({"Damage2": 9, "Damage1": 14}))) |
-                              (Has("Damage3", 10) & (Has("Damage2", 2) |
-                                                     HasAllCounts({"Damage2": 1, "Damage1": 3}) |
-                                                     Has("Damage1", 6))) |
-                              (Has("Damage3", 9) & (Has("Damage2", 4) |
-                                                    HasAllCounts({"Damage2": 3, "Damage1": 3}) |
-                                                    HasAllCounts({"Damage2": 2, "Damage1": 6}) |
-                                                    HasAllCounts({"Damage2": 1, "Damage1": 9}) |
-                                                    Has("Damage1", 12))) |
-                              (Has("Damage3", 8) & (Has("Damage2", 6) |
-                                                    HasAllCounts({"Damage2": 5, "Damage1": 3}) |
-                                                    HasAllCounts({"Damage2": 4, "Damage1": 6}) |
-                                                    HasAllCounts({"Damage2": 3, "Damage1": 9}) |
-                                                    HasAllCounts({"Damage2": 2, "Damage1": 12}) |
-                                                    HasAllCounts({"Damage2": 1, "Damage1": 15}))) |
-                              (Has("Damage3", 7) & (Has("Damage2", 8) |
-                                                    HasAllCounts({"Damage2": 7, "Damage1": 3}) |
-                                                     HasAllCounts({"Damage2": 6, "Damage1": 6}) |
-                                                     HasAllCounts({"Damage2": 5, "Damage1": 9}) |
-                                                     HasAllCounts({"Damage2": 4, "Damage1": 12}) |
-                                                     HasAllCounts({"Damage2": 3, "Damage1": 15}))) |
-                              (Has("Damage3", 6) & (Has("Damage2", 10) |
-                                                    HasAllCounts({"Damage2": 9, "Damage1": 3}) |
-                                                    HasAllCounts({"Damage2": 8, "Damage1": 6}) |
-                                                    HasAllCounts({"Damage2": 7, "Damage1": 9}) |
-                                                    HasAllCounts({"Damage2": 6, "Damage1": 12}) |
-                                                    HasAllCounts({"Damage2": 5, "Damage1": 15}))) |
-                              (Has("Damage3", 5) & (HasAllCounts({"Damage2": 10, "Damage1": 6}) |
-                                                     HasAllCounts({"Damage2": 9, "Damage1": 9}) |
-                                                     HasAllCounts({"Damage2": 8, "Damage1": 12}) |
-                                                     HasAllCounts({"Damage2": 7, "Damage1": 15}))) |
-                              (Has("Damage3", 4) & (HasAllCounts({"Damage2": 10, "Damage1": 12}) |
-                                                    HasAllCounts({"Damage2": 9, "Damage1": 15}))))) |
-            (Has("Damage4", 3) & (Has("Damage3", 10) & (HasAllCounts({"Damage2": 10, "Damage1": 1}) |
-                                                        HasAllCounts({"Damage2": 9, "Damage1": 4}) |
-                                                        HasAllCounts({"Damage2": 8, "Damage1": 7}) |
-                                                        HasAllCounts({"Damage2": 7, "Damage1": 10}) |
-                                                        HasAllCounts({"Damage2": 6, "Damage1": 13}))) |
-                                 (Has("Damage3", 9) & (HasAllCounts({"Damage2": 10, "Damage1": 7}) |
-                                                       HasAllCounts({"Damage2": 9, "Damage1": 10}) |
-                                                       HasAllCounts({"Damage2": 8, "Damage1": 13}))) |
-                                  HasAllCounts({"Damage3": 8, "Damage2": 10, "Damage1": 13})))
-damage180 = (Has("Damage5", 2) |
-             (Has("Damage5", 1) & (Has("Damage4", 3) & (Has("Damage2", 2) |
-                                                        (Has("Damage3")) |
-                                                        HasAllCounts({"Damage2": 1, "Damage1": 2}))) |
-                                   Has("Damage4", 2) & (Has("Damage3", 5)) |
-                                                        (Has("Damage3", 4) & (Has("Damage2", 2) |
-                                                                             HasAllCounts({"Damage2": 1, "Damage1": 3}) |
-                                                                             Has("Damage1", 6))) |
-                                                        (Has("Damage3", 3) & (Has("Damage2", 4) |
-                                                                             HasAllCounts({"Damage2": 3, "Damage1": 3}) |
-                                                                             HasAllCounts({"Damage2": 2, "Damage1": 6}) |
-                                                                             HasAllCounts({"Damage2": 1, "Damage1": 9}) |
-                                                                             Has("Damage1", 12))) |
-                                                        (Has("Damage3", 2) & (Has("Damage2", 6) |
-                                                                             HasAllCounts({"Damage2": 5, "Damage1": 3}) |
-                                                                             HasAllCounts({"Damage2": 4, "Damage1": 6}) |
-                                                                             HasAllCounts({"Damage2": 3, "Damage1": 9}) |
-                                                                             HasAllCounts({"Damage2": 2, "Damage1": 12}) |
-                                                                             HasAllCounts({"Damage2": 1, "Damage1": 15}))) |
-                                                        (Has("Damage3", 1) & (Has("Damage2", 8) |
-                                                                             HasAllCounts({"Damage2": 7, "Damage1": 3}) |
-                                                                             HasAllCounts({"Damage2": 6, "Damage1": 6}) |
-                                                                             HasAllCounts({"Damage2": 5, "Damage1": 9}) |
-                                                                             HasAllCounts({"Damage2": 4, "Damage1": 12}) |
-                                                                             HasAllCounts({"Damage2": 3, "Damage1": 15}))) |
-                                                         (Has("Damage2", 10)) |
-                                                         (HasAllCounts({"Damage2": 9, "Damage1": 3}) |
-                                                          HasAllCounts({"Damage2": 8, "Damage1": 6}) |
-                                                          HasAllCounts({"Damage2": 7, "Damage1": 9}) |
-                                                          HasAllCounts({"Damage2": 6, "Damage1": 12}) |
-                                                          HasAllCounts({"Damage2": 5, "Damage1": 15}))) |
-             (HasAllCounts({"Damage3": 10, "Damage2": 10, "Damage1": 15})))
-damage580 = (Has("Damage5", 5) & (Has("Damage4", 3) & (Has("Damage3") |
-                                                       HasAllCounts({"Damage2": 1, "Damage1": 2}) |
-                                                       Has("Damage1", 5)) |
-                                  Has("Damage4", 2) & (Has("Damage3", 5)) |
-                                  (Has("Damage3", 4) & (Has("Damage2", 2) |
-                                                        HasAllCounts({"Damage2": 1, "Damage1": 3}) |
-                                                        Has("Damage1", 6))) |
-                                  (Has("Damage3", 3) & (Has("Damage2", 4) |
-                                                        HasAllCounts({"Damage2": 3, "Damage1": 3}) |
-                                                        HasAllCounts({"Damage2": 2, "Damage1": 6}) |
-                                                        HasAllCounts({"Damage2": 1, "Damage1": 9}) |
-                                                        Has("Damage1", 12))) |
-                                  (Has("Damage3", 2) & (Has("Damage2", 6) |
-                                                        HasAllCounts({"Damage2": 5, "Damage1": 3}) |
-                                                        HasAllCounts({"Damage2": 4, "Damage1": 6}) |
-                                                        HasAllCounts({"Damage2": 3, "Damage1": 9}) |
-                                                        HasAllCounts({"Damage2": 2, "Damage1": 12}) |
-                                                        HasAllCounts({"Damage2": 1, "Damage1": 15}))) |
-                                  (Has("Damage3", 1) & (Has("Damage2", 8) |
-                                                        HasAllCounts({"Damage2": 7, "Damage1": 3}) |
-                                                        HasAllCounts({"Damage2": 6, "Damage1": 6}) |
-                                                        HasAllCounts({"Damage2": 5, "Damage1": 9}) |
-                                                        HasAllCounts({"Damage2": 4, "Damage1": 12}) |
-                                                        HasAllCounts({"Damage2": 3, "Damage1": 15}))) |
-                                  (Has("Damage2", 10)) |
-                                  (HasAllCounts({"Damage2": 9, "Damage1": 3}) |
-                                   HasAllCounts({"Damage2": 8, "Damage1": 6}) |
-                                   HasAllCounts({"Damage2": 7, "Damage1": 9}) |
-                                   HasAllCounts({"Damage2": 6, "Damage1": 12}) |
-                                   HasAllCounts({"Damage2": 5, "Damage1": 15}))) |
-             (HasAllCounts({"Damage5": 4, "Damage4": 3, "Damage3": 10, "Damage2": 10, "Damage1": 15})))
-damage680 = HasAllCounts({"Damage5": 5, "Damage4": 3, "Damage3": 10, "Damage2": 10, "Damage1": 15})
+DAMAGE_POWER: dict[str, int] = {
+    "Damage1": 1,
+    "Damage2": 3,
+    "Damage3": 6,
+    "Damage4": 25,
+    "Damage5": 100,
+}
 
-bossdamage50 = HasAny("BossDamage1", "BossDamage2")
-bossdamage350 = (Has("BossDamage2", 4) |
-                 HasAllCounts({"BossDamage2": 3, "BossDamage1": 1}) |
-                 HasAllCounts({"BossDamage2": 2, "BossDamage1": 3}) |
-                 HasAllCounts({"BossDamage2": 1, "BossDamage1": 5}) |
-                 Has("BossDamage1", 7))
-bossdamage400 = (Has("BossDamage2", 4) |
-                 HasAllCounts({"BossDamage2": 3, "BossDamage1": 2}) |
-                 HasAllCounts({"BossDamage2": 2, "BossDamage1": 4}) |
-                 HasAllCounts({"BossDamage2": 1, "BossDamage1": 6}) |
-                 Has("BossDamage1", 8))
-bossdamage500 = (Has("BossDamage2", 5) |
-                 HasAllCounts({"BossDamage2": 4, "BossDamage1": 2}) |
-                 HasAllCounts({"BossDamage2": 3, "BossDamage1": 4}) |
-                 HasAllCounts({"BossDamage2": 2, "BossDamage1": 6}) |
-                 HasAllCounts({"BossDamage2": 1, "BossDamage1": 8}) |
-                 Has("BossDamage1", 10))
-bossdamage700 = (Has("BossDamage2", 7) |
-                 HasAllCounts({"BossDamage2": 6, "BossDamage1": 2}) |
-                 HasAllCounts({"BossDamage2": 5, "BossDamage1": 4}) |
-                 HasAllCounts({"BossDamage2": 4, "BossDamage1": 6}) |
-                 HasAllCounts({"BossDamage2": 3, "BossDamage1": 8}) |
-                 HasAllCounts({"BossDamage2": 2, "BossDamage1": 10}) )
-bossdamage900 = (Has("BossDamage2", 9) |
-                 HasAllCounts({"BossDamage2": 8, "BossDamage1": 2}) |
-                 HasAllCounts({"BossDamage2": 7, "BossDamage1": 4}) |
-                 HasAllCounts({"BossDamage2": 6, "BossDamage1": 6}) |
-                 HasAllCounts({"BossDamage2": 5, "BossDamage1": 8}) |
-                 HasAllCounts({"BossDamage2": 4, "BossDamage1": 10}) )
-bossdamage1000 = (Has("BossDamage2", 10) |
-                 HasAllCounts({"BossDamage2": 9, "BossDamage1": 2}) |
-                 HasAllCounts({"BossDamage2": 8, "BossDamage1": 4}) |
-                 HasAllCounts({"BossDamage2": 7, "BossDamage1": 6}) |
-                 HasAllCounts({"BossDamage2": 6, "BossDamage1": 8}) |
-                 HasAllCounts({"BossDamage2": 5, "BossDamage1": 10}) )
-bossdamage1500 = HasAllCounts({"BossDamage2": 10, "BossDamage1": 10})
+BOSS_DAMAGE_POWER: dict[str, int] = {
+    "BossDamage1": 50,
+    "BossDamage2": 100,
+}
+
+HEALTH_POWER: dict[str, int] = {
+    "Health1": 4,
+    "Health2": 12,
+    "Health3": 80,
+    "Health4": 300,
+    "Health5": 4000,
+    "Health6": 50000,
+    "Health7": 100000,
+}
+
+LIFESTEAL_POWER: dict[str, int] = {
+    "Salvaging1": 1,
+    "Lifesteal1": 50,
+    "Salvaging2": 8,
+    "Lifesteal2": 1000,
+    "Lifesteal3": 5000,
+}
+
+BOSS_ARMOR_POWER: dict[str, int] = {
+    "BossArmor1": 1,
+    "BossArmor2": 25,
+}
+
+CRIT_DAMAGE_POWER: dict[str, int] = {
+    "CritDamage1": 50,
+    "CritDamage2": 200,
+}
+
+SPAWN_RATE_POWER: dict[str, int] = {
+    "SpawnRate1": 50,
+    "SpawnRate2": 200,
+    "SpawnRate3": 100,
+    "SpawnRate4": 500,
+}
+
+@dataclass()
+class DamagePowerRule(Rule[NodebusterWorld], game="Nodebuster"):
+    required_power: int
+
+    def _instantiate(self, world: NodebusterWorld) -> Rule.Resolved:
+        return self.Resolved(self.required_power, player=world.player)
+
+    class Resolved(Rule.Resolved):
+        required_power: int
+
+        def _evaluate(self, state: CollectionState) -> bool:
+            total_power = sum(
+                state.count(item_name, self.player) * power
+                for item_name, power in DAMAGE_POWER.items()
+            )
+            return total_power >= self.required_power
+
+        def item_dependencies(self) -> dict[str, set[int]]:
+            return {item_name: {id(self)} for item_name in DAMAGE_POWER}
+
+        def explain_str(self, state: CollectionState | None = None) -> str:
+            if state is None:
+                return str(self)
+            total_power = sum(
+                state.count(item_name, self.player) * power
+                for item_name, power in DAMAGE_POWER.items()
+            )
+            return f"{total_power}/{self.required_power} damage power"
+
+        def __str__(self) -> str:
+            return f"at least {self.required_power} damage power"
+
+@dataclass()
+class BossDamagePowerRule(Rule[NodebusterWorld], game="Nodebuster"):
+    required_power: int
+
+    def _instantiate(self, world: NodebusterWorld) -> Rule.Resolved:
+        return self.Resolved(self.required_power, player=world.player)
+
+    class Resolved(Rule.Resolved):
+        required_power: int
+
+        def _evaluate(self, state: CollectionState) -> bool:
+            total_power = sum(
+                state.count(item_name, self.player) * power
+                for item_name, power in BOSS_DAMAGE_POWER.items()
+            )
+            return total_power >= self.required_power
+
+        def item_dependencies(self) -> dict[str, set[int]]:
+            return {item_name: {id(self)} for item_name in BOSS_DAMAGE_POWER}
+
+        def explain_str(self, state: CollectionState | None = None) -> str:
+            if state is None:
+                return str(self)
+            total_power = sum(
+                state.count(item_name, self.player) * power
+                for item_name, power in BOSS_DAMAGE_POWER.items()
+            )
+            return f"{total_power}/{self.required_power} boss damage power"
+
+        def __str__(self) -> str:
+            return f"at least {self.required_power} boss damage power"
+
+@dataclass()
+class HealthPowerRule(Rule[NodebusterWorld], game="Nodebuster"):
+    required_power: int
+
+    def _instantiate(self, world: NodebusterWorld) -> Rule.Resolved:
+        return self.Resolved(self.required_power, player=world.player)
+
+    class Resolved(Rule.Resolved):
+        required_power: int
+
+        def _evaluate(self, state: CollectionState) -> bool:
+            total_power = sum(
+                state.count(item_name, self.player) * power
+                for item_name, power in HEALTH_POWER.items()
+            )
+            return total_power >= self.required_power
+
+        def item_dependencies(self) -> dict[str, set[int]]:
+            return {item_name: {id(self)} for item_name in HEALTH_POWER}
+
+        def explain_str(self, state: CollectionState | None = None) -> str:
+            if state is None:
+                return str(self)
+            total_power = sum(
+                state.count(item_name, self.player) * power
+                for item_name, power in HEALTH_POWER.items()
+            )
+            return f"{total_power}/{self.required_power} health power"
+
+        def __str__(self) -> str:
+            return f"at least {self.required_power} health power"
+
+@dataclass()
+class LifestealPowerRule(Rule[NodebusterWorld], game="Nodebuster"):
+    required_power: int
+
+    def _instantiate(self, world: NodebusterWorld) -> Rule.Resolved:
+        return self.Resolved(self.required_power, player=world.player)
+
+    class Resolved(Rule.Resolved):
+        required_power: int
+
+        def _evaluate(self, state: CollectionState) -> bool:
+            total_power = sum(
+                state.count(item_name, self.player) * power
+                for item_name, power in LIFESTEAL_POWER.items()
+            )
+            return total_power >= self.required_power
+
+        def item_dependencies(self) -> dict[str, set[int]]:
+            return {item_name: {id(self)} for item_name in LIFESTEAL_POWER}
+
+        def explain_str(self, state: CollectionState | None = None) -> str:
+            if state is None:
+                return str(self)
+            total_power = sum(
+                state.count(item_name, self.player) * power
+                for item_name, power in LIFESTEAL_POWER.items()
+            )
+            return f"{total_power}/{self.required_power} lifesteal power"
+
+        def __str__(self) -> str:
+            return f"at least {self.required_power} lifesteal power"
+
+@dataclass()
+class BossArmorPowerRule(Rule[NodebusterWorld], game="Nodebuster"):
+    required_power: int
+
+    def _instantiate(self, world: NodebusterWorld) -> Rule.Resolved:
+        return self.Resolved(self.required_power, player=world.player)
+
+    class Resolved(Rule.Resolved):
+        required_power: int
+
+        def _evaluate(self, state: CollectionState) -> bool:
+            total_power = sum(
+                state.count(item_name, self.player) * power
+                for item_name, power in BOSS_ARMOR_POWER.items()
+            )
+            return total_power >= self.required_power
+
+        def item_dependencies(self) -> dict[str, set[int]]:
+            return {item_name: {id(self)} for item_name in BOSS_ARMOR_POWER}
+
+        def explain_str(self, state: CollectionState | None = None) -> str:
+            if state is None:
+                return str(self)
+            total_power = sum(
+                state.count(item_name, self.player) * power
+                for item_name, power in BOSS_ARMOR_POWER.items()
+            )
+            return f"{total_power}/{self.required_power} boss armor power"
+
+        def __str__(self) -> str:
+            return f"at least {self.required_power} boss armor power"
+
+@dataclass()
+class CritDamagePowerRule(Rule[NodebusterWorld], game="Nodebuster"):
+    required_power: int
+
+    def _instantiate(self, world: NodebusterWorld) -> Rule.Resolved:
+        return self.Resolved(self.required_power, player=world.player)
+
+    class Resolved(Rule.Resolved):
+        required_power: int
+
+        def _evaluate(self, state: CollectionState) -> bool:
+            total_power = sum(
+                state.count(item_name, self.player) * power
+                for item_name, power in CRIT_DAMAGE_POWER.items()
+            )
+            return total_power >= self.required_power
+
+        def item_dependencies(self) -> dict[str, set[int]]:
+            return {item_name: {id(self)} for item_name in CRIT_DAMAGE_POWER}
+
+        def explain_str(self, state: CollectionState | None = None) -> str:
+            if state is None:
+                return str(self)
+            total_power = sum(
+                state.count(item_name, self.player) * power
+                for item_name, power in CRIT_DAMAGE_POWER.items()
+            )
+            return f"{total_power}/{self.required_power} crit damage power"
+
+        def __str__(self) -> str:
+            return f"at least {self.required_power} crit damage power"
+
+@dataclass()
+class SpawnRatePowerRule(Rule[NodebusterWorld], game="Nodebuster"):
+    required_power: int
+
+    def _instantiate(self, world: NodebusterWorld) -> Rule.Resolved:
+        return self.Resolved(self.required_power, player=world.player)
+
+    class Resolved(Rule.Resolved):
+        required_power: int
+
+        def _evaluate(self, state: CollectionState) -> bool:
+            total_power = sum(
+                state.count(item_name, self.player) * power
+                for item_name, power in SPAWN_RATE_POWER.items()
+            )
+            return total_power >= self.required_power
+
+        def item_dependencies(self) -> dict[str, set[int]]:
+            return {item_name: {id(self)} for item_name in SPAWN_RATE_POWER}
+
+        def explain_str(self, state: CollectionState | None = None) -> str:
+            if state is None:
+                return str(self)
+            total_power = sum(
+                state.count(item_name, self.player) * power
+                for item_name, power in SPAWN_RATE_POWER.items()
+            )
+            return f"{total_power}/{self.required_power} spawn rate power"
+
+        def __str__(self) -> str:
+            return f"at least {self.required_power} spawn rate power"
+
+damage1 = DamagePowerRule(1)
+damage10 = DamagePowerRule(10)
+damage15 = DamagePowerRule(15)
+damage31 = DamagePowerRule(31)
+damage37 = DamagePowerRule(37)
+damage45 = DamagePowerRule(45)
+damage63 = DamagePowerRule(63)
+damage81 = DamagePowerRule(81)
+damage91 = DamagePowerRule(91)
+damage166 = DamagePowerRule(166)
+damage180 = DamagePowerRule(180)
+damage580 = DamagePowerRule(580)
+damage680 = DamagePowerRule(680)
+
+bossdamage50 = BossDamagePowerRule(50)
+bossdamage350 = BossDamagePowerRule(350)
+bossdamage400 = BossDamagePowerRule(400)
+bossdamage500 = BossDamagePowerRule(500)
+bossdamage700 = BossDamagePowerRule(700)
+bossdamage900 = BossDamagePowerRule(900)
+bossdamage1000 = BossDamagePowerRule(1000)
+bossdamage1500 = BossDamagePowerRule(1500)
 
 
 addidamage1 = HasAny("DamagePerEnemy1", "Undamaged1", "Execute1", "Undamaged2", "Execute2", "MaxHealthToDamage1")
@@ -780,20 +501,20 @@ addidamage26 = HasFromList(*additional_damage, count=26)
 dps1 = Has("RampingDamage1")
 dps3 = Has("RampingDamage1", 3)
 
-lifesteal1 = HasAny("Salvaging1", "Lifesteal1", "Salvaging2", "Lifesteal2", "Lifesteal3")
-lifesteal2 = HasAny("Lifesteal1", "Salvaging2", "Lifesteal2", "Lifesteal3") | Has("Salvaging1", 2)
-lifesteal5 = HasAny("Lifesteal1, Salvaging2" "Lifesteal2", "Lifesteal3") | Has("Salvaging1", 5)
-lifesteal51 = HasAny("Lifesteal2", "Lifesteal3") | (Has("Lifesteal1") & HasAny("Salvaging1", "Salvaging2"))
-lifesteal205 = HasAny("Lifesteal2", "Lifesteal3") | Has("Lifesteal1", 5) | (Has("Lifesteal1", 4) & (Has("Salvaging2") | Has("Salvaging1", 5)))
-lifesteal263 = HasAny("Lifesteal2", "Lifesteal3") | HasAllCounts({"Lifesteal1": 5, "Salvaging2": 1, "Salvaging1": 5})
-lifesteal8263 = Has("Lifesteal3", 2) | HasAllCounts({"Lifesteal3": 1, "Lifesteal2": 3, "Lifesteal1": 5, "Salvaging2": 1, "Salvaging1": 5})
-lifesteal13263 = HasAllCounts({"Lifesteal3": 2, "Lifesteal2": 3, "Lifesteal1": 5, "Salvaging2": 1, "Salvaging1": 5})
+lifesteal1 = LifestealPowerRule(1)
+lifesteal2 = LifestealPowerRule(2)
+lifesteal5 = LifestealPowerRule(5)
+lifesteal51 = LifestealPowerRule(51)
+lifesteal205 = LifestealPowerRule(205)
+lifesteal263 = LifestealPowerRule(263)
+lifesteal8263 = LifestealPowerRule(8263)
+lifesteal13263 = LifestealPowerRule(13263)
 
-bossarmor1 = HasAny("BossArmor1", "BossArmor2")
-bossarmor2 = Has("BossArmor2") | Has("BossArmor1", 2)
-bossarmor10 = Has("BossArmor2") | Has("BossArmor1", 10)
-bossarmor160 = Has("BossArmor2", 7) | HasAllCounts({"BossArmor2": 6, "BossArmor1": 10})
-bossarmor210 = HasAllCounts({"BossArmor2": 8, "BossArmor1": 10})
+bossarmor1 = BossArmorPowerRule(1)
+bossarmor2 = BossArmorPowerRule(2)
+bossarmor10 = BossArmorPowerRule(10)
+bossarmor160 = BossArmorPowerRule(160)
+bossarmor210 = BossArmorPowerRule(210)
 
 regen1 = HasFromList(*regen, count=1)
 regen5 = HasFromList(*regen, count=5)
@@ -803,187 +524,32 @@ regen14 = HasFromList(*regen, count=14)
 regen17 = HasFromList(*regen, count=17)
 regen25 = HasFromList(*regen, count=25)
 
-critdamage50 = HasAny("CritDamage1", "CritDamage2")
-critdamage200 = Has("CritDamage2") | Has("CritDamage1", 4)
-critdamage500 = Has("CritDamage2", 3) | HasAllCounts({"CritDamage2": 2, "CritDamage1": 2}) | HasAllCounts({"CritDamage2": 1, "CritDamage1": 6}) | Has("CritDamage1", 10)
-critdamage2100 = HasAllCounts({"CritDamage2": 8, "CritDamage1": 6}) | HasAllCounts({"CritDamage2": 7, "CritDamage1": 10})
+critdamage50 = CritDamagePowerRule(50)
+critdamage200 = CritDamagePowerRule(200)
+critdamage500 = CritDamagePowerRule(500)
+critdamage2100 = CritDamagePowerRule(2100)
 
 infinity1 = HasAny("Infinity1", "Infinity2", "Infinity3", "Infinity4", "Infinity5", "Infinity6", "Infinity7", "Infinity8", "Infinity9")
 
-spawnrate1 = HasAny("SpawnRate1", "SpawnRate2", "SpawnRate3", "SpawnRate4")
-spawnrate950 = (Has("SpawnRate4", 3) |
-                (Has("SpawnRate4", 2) & (Has("SpawnRate2") |
-                                        Has("SpawnRate3", 2) |
-                                        HasAllCounts({"SpawnRate3": 1, "SpawnRate1": 2}) |
-                                        Has("SpawnRate1", 3))) |
-                (Has("SpawnRate4", 1) & (Has("SpawnRate3", 5) & HasAny("SpawnRate1", "SpawnRate2") |
-                                        Has("SpawnRate3", 4) & (Has("SpawnRate2") |
-                                                                Has("SpawnRate1", 3)) |
-                                        Has("SpawnRate3", 3) & (HasAllCounts({"SpawnRate2": 1, "SpawnRate1": 1}) |
-                                                                Has("SpawnRate1", 5)) |
-                                        Has("SpawnRate3", 2) & (HasAllCounts({"SpawnRate2": 1, "SpawnRate1": 3}) |
-                                                                Has("SpawnRate1", 7)) |
-                                        Has("SpawnRate3", 1) & (HasAllCounts({"SpawnRate2": 1, "SpawnRate1": 5}) |
-                                                                Has("SpawnRate1", 9)) |
-                                        HasAllCounts({"SpawnRate2": 1, "SpawnRate1": 7}) |
-                                        Has("SpawnRate1", 11))) |
-                (Has("SpawnRate3", 5) & (HasAllCounts({"SpawnRate2": 1, "SpawnRate1": 5}) |
-                                        Has("SpawnRate1", 9))) |
-                (Has("SpawnRate3", 4) & (HasAllCounts({"SpawnRate2": 1, "SpawnRate1": 7}) |
-                                        Has("SpawnRate1", 11))) |
-                (Has("SpawnRate3", 3) & (HasAllCounts({"SpawnRate2": 1, "SpawnRate1": 9}) |
-                                        Has("SpawnRate1", 13))) |
-                (Has("SpawnRate3", 2) & (HasAllCounts({"SpawnRate2": 1, "SpawnRate1": 11}) |
-                                        Has("SpawnRate1", 15))) |
-                HasAllCounts({"SpawnRate2": 1, "SpawnRate1": 15}))
-spawnrate1050 = (Has("SpawnRate4", 3) |
-                (Has("SpawnRate4", 2) & (Has("SpawnRate3", 3)) |
-                                        (Has("SpawnRate3", 2) & HasAny("SpawnRate2", "SpawnRate1")) |
-                                        (Has("SpawnRate3", 1) & (Has("SpawnRate2") |
-                                                                (Has("SpawnRate1", 3)) |
-                                                                 HasAll("SpawnRate2", "SpawnRate1"))) |
-                                        (HasAll("SpawnRate2", "SpawnRate1") |
-                                        (Has("SpawnRate1", 3)))) |
-                (Has("SpawnRate4", 1) & (Has("SpawnRate3", 5) & (Has("SpawnRate2") |
-                                                                 Has("SpawnRate1", 3))) |
-                                        (Has("SpawnRate3", 4) & (HasAll ("SpawnRate2", "SpawnRate1") |
-                                                                (Has("SpawnRate1", 5)))) |
-                                        (Has("SpawnRate3", 3) & (HasAllCounts({"SpawnRate2": 1, "SpawnRate1": 3}) |
-                                                                (Has("SpawnRate1", 7)))) |
-                                        (Has("SpawnRate3", 2) & (HasAllCounts({"SpawnRate2": 1, "SpawnRate1": 5}) |
-                                                                (Has("SpawnRate1", 9)))) |
-                                        (Has("SpawnRate3", 1) & (HasAllCounts({"SpawnRate2":1, "SpawnRate1": 7}) |
-                                                                (Has("SpawnRate1", 11)))) |
-                                        (HasAllCounts({"SpawnRate2": 1, "SpawnRate1": 9})) |
-                                        (Has("SpawnRate1", 13))) |
-                (Has("SpawnRate3", 5) & (HasAllCounts({"SpawnRate2": 1, "SpawnRate1": 7}) |
-                                        (Has("SpawnRate1", 11)))) |
-                (Has("SpawnRate3", 4) & (HasAllCounts({"SpawnRate2": 1, "SpawnRate1": 9}) |
-                                        (Has("SpawnRate1", 13)))) |
-                (Has("SpawnRate3", 3) & (HasAllCounts({"SpawnRate2": 1, "SpawnRate1": 11}) |
-                                        (Has("SpawnRate1", 15)))) |
-                (Has("SpawnRate3", 2) & (HasAllCounts({"SpawnRate2": 1, "SpawnRate1": 13}))) |
-                 HasAllCounts({"SpawnRate3": 1, "SpawnRate2": 1, "SpawnRate1": 15}))
-
-
-spawnrate1450 = (Has("SpawnRate4", 4) |
-                 (Has("SpawnRate4", 3) & (Has("SpawnRate3", 3) |
-                                         (Has("SpawnRate3", 2) & HasAny("SpawnRate2", "SpawnRate1")) |
-                                         (Has("SpawnRate3", 1) & (Has("SpawnRate2") |
-                                                                 Has("SpawnRate1", 3))) |
-                                         (HasAll("SpawnRate2", "SpawnRate1")))) |
-                 (Has("SpawnRate4", 2) & (Has("SpawnRate3", 5) & (Has("SpawnRate2") |
-                                                                 Has("SpawnRate1", 3)) |
-                                         (Has("SpawnRate3", 4) & (HasAllCounts({"SpawnRate2": 1, "SpawnRate1": 1}) |
-                                                                 Has("SpawnRate1", 5))) |
-                                         (Has("SpawnRate3", 3) & (HasAllCounts({"SpawnRate2": 1, "SpawnRate1": 3}) |
-                                                                 Has("SpawnRate1", 7))) |
-                                         (Has("SpawnRate3", 2) & (HasAllCounts({"SpawnRate2": 1, "SpawnRate1": 5}) |
-                                                                 Has("SpawnRate1", 9))) |
-                                         (Has("SpawnRate3", 1) & (HasAllCounts({"SpawnRate2": 1, "SpawnRate1": 7}) |
-                                                                 Has("SpawnRate1", 11))) |
-                                         HasAllCounts({"SpawnRate2": 1, "SpawnRate1": 9}) |
-                                         Has("SpawnRate1", 13))) |
-                 (Has("SpawnRate4", 1) & (Has("SpawnRate3", 5) & (HasAllCounts({"SpawnRate2": 1, "SpawnRate1": 7}) |
-                                                                 Has("SpawnRate1", 11))) |
-                                        (Has("SpawnRate3", 4) & (HasAllCounts({"SpawnRate2": 1, "SpawnRate1": 9}) |
-                                                                 Has("SpawnRate1", 13))) |
-                                        (Has("SpawnRate3", 3) & (HasAllCounts({"SpawnRate2": 1, "SpawnRate1": 11}) |
-                                                                 Has("SpawnRate1", 15)))) |
-                 HasAllCounts({"SpawnRate3": 5, "SpawnRate2": 1, "SpawnRate1": 15}))
-spawnrate3450 = HasAllCounts({"SpawnRate4": 5, "SpawnRate3": 5, "SpawnRate2": 1, "SpawnRate1": 15})
+spawnrate1 = SpawnRatePowerRule(1)
+spawnrate950 = SpawnRatePowerRule(950)
+spawnrate1050 = SpawnRatePowerRule(1050)
+spawnrate1450 = SpawnRatePowerRule(1450)
+spawnrate3450 = SpawnRatePowerRule(3450)
 
 bluespawn5 = Has("NodeFinder1", 5)
 
-health1 = HasAny("Health1", "Health2", "Health3", "Health4", "Health5", "Health6", "Health7")
-health40 = (HasAny("Health3", "Health4", "Health5", "Health6", "Health7") |
-            Has("Health2", 4) |
-            HasAllCounts({"Health2": 3, "Health1": 1}) |
-            HasAllCounts({"Health2": 2, "Health1": 4}) |
-            HasAllCounts({"Health2": 1, "Health1": 7}) |
-            Has("Health1", 10))
-health88 = (HasAny("Health4", "Health5", "Health6", "Health7") |
-            Has("Health3", 2) |
-            Has("Health3", 1) & (Has("Health2") | Has("Health1", 2)) |
-            Has("Health2", 8) |
-            HasAllCounts({"Health2": 7, "Health1": 1}) |
-            HasAllCounts({"Health2": 6, "Health1": 4}) |
-            HasAllCounts({"Health2": 5, "Health1": 7}) |
-            HasAllCounts({"Health2": 4, "Health1": 10}))
-health376 = (HasAny("Health5", "Health6", "Health7") |
-             Has("Health4", 2) |
-             (Has("Health4", 1) & (Has("Health3") |
-                                   Has("Health2", 7) |
-                                   HasAllCounts({"Health2": 6, "Health1": 1}) |
-                                   HasAllCounts({"Health2": 5, "Health1": 4}) |
-                                   HasAllCounts({"Health2": 4, "Health1": 7}) |
-                                   HasAllCounts({"Health2": 3, "Health1": 10}))) |
-             Has("Health3", 5) |
-              (Has("Health3", 4) & (Has("Health2", 5) |
-                                    HasAllCounts({"Health2": 4, "Health1": 2}) |
-                                    HasAllCounts({"Health2": 3, "Health1": 5}) |
-                                    HasAllCounts({"Health2": 2, "Health1": 8}))) |
-              HasAllCounts({"Health3": 3, "Health2": 8, "Health1": 10}))
-health696 = (HasAny("Health5", "Health6", "Health7") |
-             Has("Health4", 3) |
-             (Has("Health4", 2) & (Has("Health3", 2) |
-                                   Has("Health3", 1) & (Has("Health2", 2) |
-                                                        HasAllCounts({"Health2": 1, "Health1": 1}) |
-                                                        Has("Health1", 4)) |
-                                   Has("Health2", 8) |
-                                   HasAllCounts({"Health2": 7, "Health1": 3}) |
-                                   HasAllCounts({"Health2": 6, "Health1": 6}) |
-                                   HasAllCounts({"Health2": 5, "Health1": 9}))) |
-             (Has("Health4", 1) & (Has("Health3", 5) |
-                                   (Has("Health3", 4) & (Has("Health2", 7) |
-                                                         HasAllCounts({"Health2": 6, "Health1": 1}) |
-                                                         HasAllCounts({"Health2": 5, "Health1": 4}) |
-                                                         HasAllCounts({"Health2": 4, "Health1": 7}) |
-                                                         HasAllCounts({"Health2": 3, "Health1": 10}))))))
-health1016 = (HasAny("Health5", "Health6", "Health7") |
-              Has("Health4", 4) |
-              (Has("Health4", 3) & (Has("Health3", 2) |
-                                    Has("Health3", 1) & (Has("Health2", 3) |
-                                                         HasAllCounts({"Health2": 2, "Health1": 3}) |
-                                                         HasAllCounts({"Health2": 1, "Health1": 6}) |
-                                                         Has("Health1", 9)) |
-                                    HasAllCounts({"Health2": 10, "Health1": 5}) |
-                                    HasAllCounts({"Health2": 9, "Health1": 8}))))
-health2216 = (HasAny("Health5", "Health6", "Health7") |
-              Has("Health4", 7) |
-              (Has("Health4", 6) & (Has("Health3", 6) |
-                                    (Has("Health3", 5) & (Has("Health2", 2) |
-                                                          HasAllCounts({"Health2": 1, "Health1": 1}) |
-                                                          Has("Health1", 4))) |
-                                    (Has("Health3", 4) & (Has("Health2", 8) |
-                                                          HasAllCounts({"Health2": 7, "Health1": 3}) |
-                                                          HasAllCounts({"Health2": 6, "Health1": 6}) |
-                                                          HasAllCounts({"Health2": 5, "Health1": 9}))))) |
-              (Has("Health4", 5) & (Has("Health3", 9) |
-                                    Has("Health3", 8) & (Has("Health2", 7) |
-                                                         HasAllCounts({"Health2": 6, "Health1": 1}) |
-                                                         HasAllCounts({"Health2": 5, "Health1": 4}) |
-                                                         HasAllCounts({"Health2": 4, "Health1": 7}) |
-                                                         HasAllCounts({"Health2": 3, "Health1": 10})))))
-health4016 = (HasAny("Health6", "Health7") |
-              Has("Health5", 2) |
-              (Has("Health5", 1) & (HasAny("Health4", "Health3") |
-                                    Has("Health2", 2) |
-                                    HasAllCounts({"Health2": 1, "Health1": 1}) |
-                                    Has("Health1", 4))))
-health265936 = (Has("Health7", 3) |
-                (Has("Health7", 2) & (Has("Health6", 2) |
-                                     Has("Health6", 1) & (Has("Health5", 4) |
-                                                          HasAllCounts({"Health5": 3, "Health4": 10, "Health3": 10, "Health2": 8, "Health1": 10})))) |
-                (Has("Health7", 1) & (Has("Health6", 4) |
-                                      Has("Health6", 3) & (Has("Health5", 4) |
-                                                           HasAllCounts({"Health5": 3, "Health4": 10, "Health3": 10, "Health2": 8, "Health1": 10})))) |
-                (Has("Health6", 5) & (Has("Health5", 4) |
-                                                           HasAllCounts({"Health5": 3, "Health4": 10, "Health3": 10, "Health2": 8, "Health1": 10}))))
-health365936 = (Has("Health7", 4) |
-                Has("Health7", 3) & (Has("Health6", 2) |
-                                     (HasAllCounts({"Health6": 1, "Health5": 3, "Health4": 10, "Health3": 10, "Health2": 8, "Health1": 10}))))
-health765936 = HasAllCounts({"Health7": 5, "Health6": 5, "Health5": 3, "Health4": 10, "Health3": 10, "Health2": 8, "Health1": 10})
+health1 = HealthPowerRule(1)
+health40 = HealthPowerRule(40)
+health88 = HealthPowerRule(88)
+health376 = HealthPowerRule(376)
+health696 = HealthPowerRule(696)
+health1016 = HealthPowerRule(1016)
+health2216 = HealthPowerRule(2216)
+health4016 = HealthPowerRule(4016)
+health265936 = HealthPowerRule(265936)
+health365936 = HealthPowerRule(365936)
+health765936 = HealthPowerRule(765936)
 
 armor1 = HasFromList(*armor, count=1)
 armor10 = HasFromList(*armor, count=10)
@@ -1747,80 +1313,6 @@ def set_region_rules(world, player: int) -> dict:
         world.get_region("Milestone Page").connect(world.get_region("Blue Milestones"), "Blue Milestones", can_start_blue_milestones)
         world.get_region("Milestone Page").connect(world.get_region("Yellow Milestones"), "Yellow Milestones", can_start_yellow_milestones)
         world.get_region("Infinity").connect(world.get_region("Epilogue"), "Goal", can_release_virus)
-        #world.set_rule(world.get_region("Crowding"), ProgItemRule("Progressive Damage", 1) | damage1)
-        #world.set_rule(world.get_region("Firewall"), ProgItemRule("Progressive Health", 1) | health1)
-        #world.set_rule(world.get_region("Repair Tool"), ProgItemRule("Progressive Health", 1) | health1)
-        #world.set_rule(world.get_region("Potency"), (ProgItemRule("Progressive Damage", 31) | damage31) & has_access_to_blue_enemies)
-        #world.set_rule(world.get_region("Nodeblade"), (ProgItemRule("Progressive Damage", 91) | damage91) & has_access_to_blue_enemies)
-        #world.set_rule(world.get_region("First Strike"), (ProgItemRule("Progressive Damage", 37) | damage37))
-        #world.set_rule(world.get_region("Crit Chance"), (ProgItemRule("Progressive Damage", 37) | damage37))
-        #world.set_rule(world.get_region("Crit Damage"), Has("CritChance1"))
-        #world.set_rule(world.get_region("Big Crit"), (ProgItemRule("Progressive Critical Damage", 50) | critdamage50) & has_crypto_mine)
-        #world.set_rule(world.get_region("Netblade"), (ProgItemRule("Progressive Damage", 166) | damage166) & has_crypto_mine)
-        #world.set_rule(world.get_region("Giant Slayer"), (ProgItemRule("Progressive Additional Damage", 1) | addidamage1))
-        #world.set_rule(world.get_region("Repeating"), (ProgItemRule("Progressive Additional Damage", 1) | addidamage1))
-        #world.set_rule(world.get_region("Finishing Blow"), (ProgItemRule("Progressive Additional Damage", 17) | addidamage17))
-        #world.set_rule(world.get_region("Beyond"), (ProgItemRule("Progressive Health", 265936) | health265936))
-        #world.set_rule(world.get_region("Sapper"), (ProgItemRule("Progressive Lifesteal", 1) | lifesteal1) & has_access_to_blue_enemies)
-        #world.set_rule(world.get_region("Skilled Salvager"), (ProgItemRule("Progressive Lifesteal", 5) | lifesteal5) & has_access_to_blue_enemies)
-        #world.set_rule(world.get_region("Patcher"), (ProgItemRule("Progressive Lifesteal", 51) | lifesteal51))
-        #world.set_rule(world.get_region("Better Endurance"), (ProgItemRule("Progressive Lifesteal", 1) | lifesteal1) | (ProgItemRule("Progressive Boss Armor", 1) | bossarmor1))
-        #world.set_rule(world.get_region("Drainer"), (ProgItemRule("Progressive Regen", 17) | regen17) & has_crypto_mine)
-        #world.set_rule(world.get_region("Bit Boost"), (ProgItemRule("Progressive SpawnRate", 1) | spawnrate1))
-        #world.set_rule(world.get_region("Last Strike"), (ProgItemRule("Progressive Additional Damage", 6) | addidamage6))
-        #world.set_rule(world.get_region("Influence"), (ProgItemRule("Progressive SpawnRate", 1) | spawnrate1))
-        #world.set_rule(world.get_region("Swarming"), (ProgItemRule("Progressive SpawnRate", 1) | spawnrate1))
-        #world.set_rule(world.get_region("Infesting"), (ProgItemRule("Progressive SpawnRate", 950) | spawnrate950))
-        #world.set_rule(world.get_region("Overloaded"), (ProgItemRule("Progressive SpawnRate", 1450) | spawnrate1450) & has_crypto_mine)
-        #world.set_rule(world.get_region("Antivirus"), (ProgItemRule("Progressive Armor", 10) | armor10))
-        #world.set_rule(world.get_region("Swarm Defense System"), (ProgItemRule("Progressive Armor", 11) | armor11))
-        #world.set_rule(world.get_region("Bolster"), (ProgItemRule("Progressive Armor", 15) | armor15))
-        #world.set_rule(world.get_region("Super Armor"), (ProgItemRule("Progressive Armor", 35) | armor35))
-        #world.set_rule(world.get_region("Anti-Purple"), (ProgItemRule("Progressive Armor", 36) | armor36) & has_access_to_blue_enemies)
-        #world.set_rule(world.get_region("Bit Armor"), (ProgItemRule("Progressive Armor", 45) | armor45))
-        #world.set_rule(world.get_region("Byte Armor"), (ProgItemRule("Progressive Armor", 65) | armor65))
-        #world.set_rule(world.get_region("Blood Armor"), (ProgItemRule("Progressive Armor", 95) | armor95) & has_access_to_blue_enemies)
-        #world.set_rule(world.get_region("Net Armor"), (ProgItemRule("Progressive Armor", 95) | armor95) & has_crypto_mine)
-        #world.set_rule(world.get_region("Focus Armor"), (ProgItemRule("Progressive Armor", 95) | armor95))
-        #world.set_rule(world.get_region("Blood Visage"), (ProgItemRule("Progressive Armor", 110) | armor110) & has_crypto_mine)
-        #world.set_rule(world.get_region("Domain Expansion"), (ProgItemRule("Progressive SpawnRate", 1050) | spawnrate1050))
-        #world.set_rule(world.get_region("Processor Acquisition"), has_crypto_mine)
-        #world.set_rule(world.get_region("Endurance"), (ProgItemRule("Progressive Damage", 1) | damage1))
-        #world.set_rule(world.get_region("Connection Buster"), (ProgItemRule("Progressive Damage", 1) | damage1))
-        #world.set_rule(world.get_region("Pulse Bolts"), has_access_to_blue_enemies)
-        #world.set_rule(world.get_region("Scaling Regeneration"), has_access_to_blue_enemies)
-        #world.set_rule(world.get_region("Auto-Collect"), has_access_to_blue_enemies)
-        #world.set_rule(world.get_region("Crypto Mine"), has_access_to_blue_enemies)
-        #world.set_rule(world.get_region("Milestones"), has_access_to_blue_enemies)
-        #world.set_rule(world.get_region("Spawn Exploders"), has_access_to_blue_enemies)
-        #world.set_rule(world.get_region("Unending Parasite"), has_access_to_blue_enemies)
-        #world.set_rule(world.get_region("Bolt Burst"), has_access_to_blue_enemies & Has("PulseBoltDamage1"))
-        #world.set_rule(world.get_region("Pulser Pursuit"), has_access_to_blue_enemies)
-        #world.set_rule(world.get_region("Pulse Thumper"), has_access_to_blue_enemies)
-        #world.set_rule(world.get_region("Parasite Evolution"), has_access_to_blue_enemies)
-        #world.set_rule(world.get_region("Indomitable"), has_access_to_blue_enemies)
-        #world.set_rule(world.get_region("Thundering"), has_access_to_blue_enemies)
-        #world.set_rule(world.get_region("Infinity"), has_access_to_blue_enemies)
-        #world.set_rule(world.get_region("Bolt Damage"), Has("PulseBolts"))
-        #world.set_rule(world.get_region("Bolt Count"), Has("PulseBolts"))
-        #world.set_rule(world.get_region("Bolt Barrage"), Has("PulseBoltCount2"))
-        #world.set_rule(world.get_region("Bolt Lethality"), HasAny("PulseBoltExplode", "PulseBoltCount2") & has_crypto_mine)
-        #world.set_rule(world.get_region("Epilogue"), can_release_virus)
-        # Node off of Netcoin
-        #"Thundering": lambda state: has_access_to_net_and_nodes(world, state, player),
-        #"Pulser Pursuit": lambda state: has_access_to_net_and_nodes(world, state, player),
-        #"Pulse Thumper": lambda state: has_access_to_net_and_nodes(world, state, player),
-        #"Unending Parasite": lambda state: has_access_to_net_and_nodes(world, state, player),
-        # Netcoin
-        #world.set_rule(world.get_region("Auto Pulser"), has_crypto_mine)
-        #world.set_rule(world.get_region("Transplant"), has_crypto_mine)
-        #world.set_rule(world.get_region("Crypto Levels"), has_crypto_mine)
-        # Milestones
-        #world.set_rule(world.get_region("Milestone Page"), has_milestones_upgrade)
-        #world.set_rule(world.get_region("Red Milestones"), can_start_red_milestones)
-        #world.set_rule(world.get_region("Blue Milestones"), can_start_blue_milestones)
-        #world.set_rule(world.get_region("Yellow Milestones"), can_start_yellow_milestones)
-
 
 def get_upgrade_connection_rules_lookup(world, player: int) -> dict:
     '''
