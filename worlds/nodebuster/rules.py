@@ -1267,7 +1267,7 @@ def set_region_rules(world, player: int) -> dict:
         world.get_region("Blood Armor").connect(world.get_region("Blood Visage"), "MaxHealthToArmor2", (ProgItemRule("Progressive Armor", 110) | armor110) & has_crypto_mine & can_beat_boss8)
         world.get_region("B.I.G.").connect(world.get_region("Auto-Collect"), "AutoCollect", has_access_to_blue_enemies & can_beat_boss13)
         world.get_region("Crypto Mine").connect(world.get_region("Processor Acquisition"), "YellowSpawn1", has_crypto_mine & can_beat_boss2)
-        world.get_region("Crypto Mine").connect(world.get_region("Crypto Levels"), "CryptoLevel", has_crypto_mine, has_access_to_yellow_enemies)
+        world.get_region("Crypto Mine").connect(world.get_region("Crypto Levels"), "CryptoLevel", has_crypto_mine & has_access_to_yellow_enemies)
         world.get_region("Node Finder").connect(world.get_region("Node Boost"), "NodeBoost1")
         world.get_region("Node Finder").connect(world.get_region("Milestones"), "Milestones", has_access_to_blue_enemies)
         world.get_region("Node Finder").connect(world.get_region("Spawn Exploders"), "ExplodersUpgrades", has_access_to_blue_enemies)
